@@ -8,9 +8,9 @@ class Course(Base):
     __tablename__ = 'Course'
 
     id = Column(String, primary_key = True)
-    crosslist = Column(String)
+    cross_list = Column(String)
     term = Column(String)
-    Level = Column(String)
+    level = Column(String)
     title = Column(String)
 
     # To become many-to-many relationship with Student

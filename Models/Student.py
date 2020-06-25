@@ -8,8 +8,8 @@ class Student(Base):
     __tablename__ = 'student'
 
     id = Column(String, primary_key = True)
-    firstname = Column(String)
-    lastname = Column(String)
+    first_name = Column(String)
+    last_name = Column(String)
     username = Column(String)
     email = Column(String)
 
