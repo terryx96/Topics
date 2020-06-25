@@ -2,6 +2,12 @@ from sqlalchemy import Column, Integer, String, ForeignKey, Table
 from sqlalchemy.orm import relationship
 from base import Base
 
+association_table = Table(
+    'association', Base.metadata,
+    Column('course_id', Integer, ForeignKey('course.id')),
+    Column('student_id', Integer, ForeignKey('student.id'))
+)
+
 class Student(Base):
     __tablename__ = 'student'
 
@@ -11,8 +17,7 @@ class Student(Base):
     username = Column(String)
     email = Column(String)
 
-    # To become many-to-many relationship with Course
-    courses = relationship("Course") 
+    courses = relationship("Course", secondary=association_table) 
     
     def __init__(self, id, first_name, last_name, username, courses):
         self.id = id,
