@@ -15,3 +15,11 @@ class Student(Base):
 
     # To become many-to-many relationship with Course
     courses = relationship("Course") 
+    
+    def __init__(self, id, first_name, last_name, username, courses):
+        self.id = id,
+        self.first_name = first_name,
+        self.last_name = last_name,
+        self.username = username,
+        self.courses = courses
+
