@@ -12,7 +12,6 @@ class Course(Base):
     level = Column(String)
     title = Column(String)
 
-    # To become many-to-many relationship with Student
     students = relationship("Student")
 
     def __init__(self, id, cross_list, term, level, title, students):
