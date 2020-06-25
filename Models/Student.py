@@ -1,8 +1,6 @@
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, ForeignKey, Table
 from sqlalchemy.orm import relationship
-
-Base = declarative_base()
+from base import Base
 
 class Student(Base):
     __tablename__ = 'student'
@@ -22,4 +20,3 @@ class Student(Base):
         self.last_name = last_name,
         self.username = username,
         self.courses = courses
-
