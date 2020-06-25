@@ -14,14 +14,16 @@ class Student(Base):
     id = Column(String, primary_key = True)
     first_name = Column(String)
     last_name = Column(String)
+    program = Column(String)
     username = Column(String)
     email = Column(String)
 
     courses = relationship("Course", secondary=association_table) 
     
-    def __init__(self, id, first_name, last_name, username, courses):
-        self.id = id,
-        self.first_name = first_name,
-        self.last_name = last_name,
-        self.username = username,
+    def __init__(self, id, first_name, last_name, program, username, courses):
+        self.id = id
+        self.first_name = first_name
+        self.last_name = last_name
+        self.program = program
+        self.username = username
         self.courses = courses
