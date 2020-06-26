@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, Table
 from sqlalchemy.orm import relationship
-from base import Base
+from .base import Base
 
 association_table = Table(
     'association', Base.metadata,
@@ -11,12 +11,12 @@ association_table = Table(
 class Student(Base):
     __tablename__ = 'student'
 
-    id = Column(String, primary_key = True)
-    first_name = Column(String)
-    last_name = Column(String)
-    program = Column(String)
-    username = Column(String)
-    email = Column(String)
+    id = Column(String(10), primary_key = True)
+    first_name = Column(String(6))
+    last_name = Column(String(7))
+    program = Column(String(5))
+    username = Column(String(10))
+    email = Column(String(20))
 
     courses = relationship("Course", secondary=association_table) 
     

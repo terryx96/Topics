@@ -21,4 +21,6 @@ def random_course():
     return cr.Course(section, xlist, term, level, title, [])
 
 if __name__ == "__main__":
+
+
     create_courses()
