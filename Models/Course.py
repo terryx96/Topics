@@ -3,14 +3,9 @@ from sqlalchemy import Column, Integer, String, ForeignKey, Table
 from sqlalchemy.orm import relationship
 from .base import Base
 
-association_table = Table(
-    'association', Base.metadata,
-    Column('course_id', Integer, ForeignKey('course.id')),
-    Column('student_id', Integer, ForeignKey('student.id'))
-)
-
 class Course(Base):
     __tablename__ = 'Course'
+    __table_args__ = {'extend_existing': True}
 
     id = Column(String(10), primary_key = True)
     cross_list = Column(String(6))
@@ -18,12 +13,14 @@ class Course(Base):
     level = Column(String(1))
     title = Column(String(20))
 
-    students = relationship("Student", secondary=association_table)
+    # students = relationship("Student",
+    #                         back_populates = "courses")
 
-    def __init__(self, id, cross_list, term, level, title, students):
+    # def __init__(self, id, cross_list, term, level, title, students):
+    def __init__(self, id, cross_list, term, level, title):
         self.id = id
         self.cross_list = cross_list
         self.term = term
         self.level = level
         self.title = title
-        self.students = students
+        #self.students = students
