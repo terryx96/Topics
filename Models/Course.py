@@ -19,3 +19,6 @@ class Course(Base):
         self.term = term
         self.level = level
         self.title = title
+
+    def __str__(self):
+        return "%s %s %s %s %s %s" % (self.id, self.section, self.cross_list, self.term, self.level, self.title)

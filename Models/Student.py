@@ -19,3 +19,13 @@ class Student(Base):
         self.program = program
         self.username = username
         self.email = email
+    
+    def update(self, student):
+        self.first_name = student.first_name
+        self.last_name = student.last_name
+        self.program = student.program
+        self.username = student.username
+        self.email = student.email
+
+    def __str__(self):
+        return "%s %s %s %s %s %s" % (self.id, self.first_name, self.last_name, self.program, self.username, self.email)
