@@ -1,12 +1,11 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Table
-from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Integer, String
 from .base import Base
 
 class Student(Base):
     __tablename__ = 'student'
     __table_args__ = {'extend_existing': True}
 
-    id = Column(String(10), primary_key = True)
+    id = Column(Integer, primary_key = True)
     first_name = Column(String(6))
     last_name = Column(String(7))
     program = Column(String(5))
