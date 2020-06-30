@@ -33,3 +33,17 @@ def delete_student(id):
         .delete(synchronize_session='fetch')
     session.commit()
     session.close()
+
+def create_course(course):
+    session = session_factory()
+    session.add(course)
+    session.commit()
+    session.close()
+
+def get_course_by_id(id):
+    session = session_factory()
+    course = session.query(Course).get(id)
+    session.close()
+    return course 
+
+
