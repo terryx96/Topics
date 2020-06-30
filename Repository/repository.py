@@ -1,6 +1,7 @@
 from Models.base import session_factory
 from Models.Course import Course
 from Models.Student import Student
+from sqlalchemy import exc
 
 def create_student(student):
     session = session_factory()
@@ -14,8 +15,15 @@ def get_student_by_id(id):
     session.close()
     return student 
 
-def update_student():
+def update_student(newStudent):
     session = session_factory()
+    student = session.query(Student).get(newStudent.id)
+    student.update(newStudent)
+    try:
+        session.add(student)
+        session.commit()
+    except exc.IntegrityError:
+        session.rollback()
     session.close()
 
 def delete_student(id):
