@@ -56,3 +56,11 @@ def update_course(newCourse):
     except exc.IntegrityError:
         session.rollback()
     session.close()
+
+def delete_course(id):
+    session = session_factory()
+    session.query(Course)\
+        .filter(Course.id == id)\
+        .delete(synchronize_session='fetch')
+    session.commit()
+    session.close()
