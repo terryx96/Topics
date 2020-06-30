@@ -46,4 +46,13 @@ def get_course_by_id(id):
     session.close()
     return course 
 
-
+def update_course(newCourse):
+    session = session_factory()
+    course = session.query(Course).get(newCourse.id)
+    course.update(newCourse)
+    try:
+        session.add(course)
+        session.commit()
+    except exc.IntegrityError:
+        session.rollback()
+    session.close()
