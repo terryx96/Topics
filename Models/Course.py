@@ -13,14 +13,9 @@ class Course(Base):
     level = Column(String(1))
     title = Column(String(20))
 
-    # students = relationship("Student",
-    #                         back_populates = "courses")
-
-    # def __init__(self, id, cross_list, term, level, title, students):
     def __init__(self, id, cross_list, term, level, title):
         self.id = id
         self.cross_list = cross_list
         self.term = term
         self.level = level
         self.title = title
-        #self.students = students
