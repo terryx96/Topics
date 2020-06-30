@@ -33,3 +33,34 @@ def delete_student(id):
         .delete(synchronize_session='fetch')
     session.commit()
     session.close()
+
+def create_course(course):
+    session = session_factory()
+    session.add(course)
+    session.commit()
+    session.close()
+
+def get_course_by_id(id):
+    session = session_factory()
+    course = session.query(Course).get(id)
+    session.close()
+    return course 
+
+def update_course(newCourse):
+    session = session_factory()
+    course = session.query(Course).get(newCourse.id)
+    course.update(newCourse)
+    try:
+        session.add(course)
+        session.commit()
+    except exc.IntegrityError:
+        session.rollback()
+    session.close()
+
+def delete_course(id):
+    session = session_factory()
+    session.query(Course)\
+        .filter(Course.id == id)\
+        .delete(synchronize_session='fetch')
+    session.commit()
+    session.close()

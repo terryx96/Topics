@@ -20,5 +20,12 @@ class Course(Base):
         self.level = level
         self.title = title
 
+    def update(self, course):
+        self.section = course.section
+        self.cross_list = course.cross_list
+        self.term = course.term
+        self.level = course.level
+        self.title = course.title
+
     def __str__(self):
         return "%s %s %s %s %s %s" % (self.id, self.section, self.cross_list, self.term, self.level, self.title)
