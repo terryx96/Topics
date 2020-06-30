@@ -6,3 +6,21 @@ def get_all_courses():
     courses_query = session.query(Course)
     session.close()
     return courses_query.all()
+
+def create_student():
+    session = session_factory()
+    session.close()
+    return 
+
+def get_student_by_id(id):
+    session = session_factory()
+    session.close()
+    return 
+
+def update_student():
+    session = session_factory()
+    session.close()
+
+def delete_student():
+    session = session_factory()
+    session.close()
