@@ -19,3 +19,6 @@ class Student(Base):
         self.program = program
         self.username = username
         self.email = email
+
+    def __str__(self):
+        return "%s %s %s %s %s %s" % (self.id, self.first_name, self.last_name, self.program, self.username, self.email)
