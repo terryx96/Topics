@@ -4,3 +4,4 @@
 __main__.py
 util.py
 base.py
+**/__pycache__
