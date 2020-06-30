@@ -24,6 +24,10 @@ def update_student():
     session = session_factory()
     session.close()
 
-def delete_student():
+def delete_student(id):
     session = session_factory()
+    session.query(Student)\
+        .filter(Student.id == id)\
+        .delete(synchronize_session='fetch')
+    session.commit()
     session.close()
