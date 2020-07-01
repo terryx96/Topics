@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String
-from .base import Base
+from sqlalchemy.orm import relationship
+from .base import Base, StudentCourse
 
 class Student(Base):
     __tablename__ = 'student'
@@ -11,6 +12,8 @@ class Student(Base):
     program = Column(String(5))
     username = Column(String(10))
     email = Column(String(20))
+
+    students = relationship("Course", secondary = StudentCourse, backref = "Student")
 
     def __init__(self, id, first_name, last_name, program, username, email):
         self.id = id

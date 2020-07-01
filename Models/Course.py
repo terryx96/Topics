@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String
-from .base import Base
+from sqlalchemy.orm import relationship
+from .base import Base, StudentCourse
 
 class Course(Base):
     __tablename__ = 'course'
@@ -11,6 +12,8 @@ class Course(Base):
     term = Column(String(4))
     level = Column(String(1))
     title = Column(String(20))
+
+    courses = relationship("Student", secondary = StudentCourse, backref = "course")
 
     def __init__(self, id, section, cross_list, term, level, title):
         self.id = id
