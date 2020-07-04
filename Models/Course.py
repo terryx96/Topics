@@ -1,6 +1,12 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Table, ForeignKey
 from sqlalchemy.orm import relationship
-from .base import Base, StudentCourse
+from .base import Base
+
+course_student = Table('students_courses',
+        Column("id", Integer, primary_key=True),
+        Column("courseId", Integer, ForeignKey("course.id")) ,
+        Column("studentId", Integer, ForeignKey("student.id"))
+    )
 
 class Course(Base):
     __tablename__ = 'course'
@@ -13,7 +19,7 @@ class Course(Base):
     level = Column(String(1))
     title = Column(String(20))
 
-    courses = relationship("Student", secondary = StudentCourse, backref = "course")
+    students = relationship("Student", secondary = course_student, backref = "courses")
 
     def __init__(self, id, section, cross_list, term, level, title):
         self.id = id
