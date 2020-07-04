@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String, Table, ForeignKey
 from sqlalchemy.orm import relationship
 from .base import Base
 
-course_student = Table('students_courses',
+course_student = Table('students_courses', Base.metadata,
         Column("id", Integer, primary_key=True),
         Column("courseId", Integer, ForeignKey("course.id")) ,
         Column("studentId", Integer, ForeignKey("student.id"))
@@ -14,12 +14,12 @@ class Course(Base):
 
     id = Column(Integer, primary_key = True)
     section = Column(String(10))
-    cross_list = Column(String(6))
-    term = Column(String(4))
+    cross_list = Column(String(10))
+    term = Column(String(6))
     level = Column(String(1))
-    title = Column(String(20))
+    title = Column(String(50))
 
-    students = relationship("Student", secondary = course_student, backref = "courses")
+    students = relationship("Student", secondary = course_student, backref = "courses", lazy = "dynamic")
 
     def __init__(self, id, section, cross_list, term, level, title):
         self.id = id
