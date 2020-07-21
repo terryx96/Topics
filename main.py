@@ -1,5 +1,8 @@
-def main():
-    pass
+from Service.service import import_data
 
-if __name__ == "main":
+def main():
+    df = import_data()
+    print(df)
+
+if __name__ == "__main__":
     main()
