@@ -1,8 +1,5 @@
 import pandas as pd
-import Repository as repo
 
-def main():
-    print("Hello world")
-
-if __name__ == "__main__":
-    main()
+def import_data():
+    df = pd.read_csv()
+    print(df)
