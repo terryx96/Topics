@@ -1,8 +1,9 @@
-from Service.service import import_data
-
+from Service.service import Service
 def main():
-    df = import_data()
-    print(df)
+    s = Service()
+    s.import_data()
+    print(s.courses)
+    print(s.students)
 
 if __name__ == "__main__":
     main()
